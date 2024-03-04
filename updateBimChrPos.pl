@@ -28,12 +28,10 @@ usage($EXE) if(! defined $inputBim);
 print "Read $refBim...\n";
 open(FR, "<$refBim") or die $!;
 my %maps;
-my $nskip = 0;
 while(<FR>){
         chomp;
         my $s = $_;
         my @arr=split(/\s+/, $_);
-        $maps{$arr[1]} = $s;
         $maps{$arr[1]}{"chr"} = $arr[0];
         $maps{$arr[1]}{"cm"} = $arr[2];
         $maps{$arr[1]}{"pos"} = $arr[3];
