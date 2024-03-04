@@ -10,9 +10,9 @@ my $EXE = $0;
 sub usage{
         my ($EXE)=@_;
         print STDERR "Usage:\tperl $EXE --bim|-b <old_bim_file> --map|-m <liftOver_new_map_file> --out|-o <output_bim_file>\n\n";
-        print STDERR "  --bim|-b, old bim file.\n";
-        print STDERR "  --map|-m, map file after liftOver.\n";
-        print STDERR "  --out|-o, output new bim file.\n";
+        print STDERR "  --bim|-b, old BIM file to be updated.\n";
+        print STDERR "  --map|-m, MAP file after liftOver as produced by liftOverPlink.py.\n";
+        print STDERR "  --out|-o, output new BIM file.\n";
         exit 0;
 }
 
