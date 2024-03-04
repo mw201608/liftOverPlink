@@ -47,7 +47,7 @@ def map2bed(fin, fout):
     return True
 
 def bim2bed(fin, fout):
-    print "Converting MAP file to UCSC BED file..."
+    print "Converting BIM file to UCSC BED file..."
     fo = open(fout, 'w')
     for ln in myopen(fin):
         chrom, rs, mdist, pos, A1, A2 = ln.split()
