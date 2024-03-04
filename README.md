@@ -68,4 +68,15 @@ Arguments:
   --map|-m              MAP file after liftOver as produced by liftOverPlink.py.
   --out|-o              output new BIM file.
 ```
+### updateBimChrPos.pl
+```
+usage: updateBimChrPos.pl --bim|-b <input_bim_file> --ref|-r <reference_bim_file> --out|-o <output_bim_file>
+
+updateBimChrPos.pl updates chromosome and pos in a BIM file based on a reference BIM..
+
+Arguments:
+  --bim|-b              input BIM file to be updated.
+  --ref|-r              referene BIM file containing the new chromosome and position information.
+  --out|-o              output new BIM file.
+```
 
