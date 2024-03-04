@@ -62,6 +62,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -m MAPFILE, --map MAPFILE
                         The plink MAP file to `liftOver`.
+  -b                    If specified, MAP file is in BIM format.
   -p PEDFILE, --ped PEDFILE
                         Optionally remove "unlifted SNPs" from the plink PED
                         file after running `liftOver`.
