@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 use strict;
 use Getopt::Long;
-#Perl script to update plink BIM file after liftOver. This is only for handling human data.
+#Perl script to remove variants that are on contig scaffolds (similar to rmBadLifts.py) following liftOver and then update variants information in BIM file. This is only designed for handling human data.
 #Author: Minghui Wang (m.h.wang@live.com)
 #
 
