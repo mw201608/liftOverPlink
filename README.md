@@ -11,6 +11,7 @@ This repository is forked from [sritchie73/liftOverPlink](https://github.com/sri
 ---
 ## Usage
 
+### liftOverPlink.py
 ```
 usage: liftOverPlink.py [-h] -m MAPFILE [-p PEDFILE] [-d DATFILE] -o PREFIX -c
                         CHAINFILE [-e LIFTOVEREXECUTABLE]
@@ -40,10 +41,27 @@ optional arguments:
 ```
 
 ## Companion Tools
+### rmBadLifts.py
+```
+usage: rmBadLifts.py [-h] -m MAPFILE -o OUTFILE -l LOGFILE
+
+rmBadLifts.py goes through a plink MAP file, identifies and removes SNPs not
+on chromosomes 1 to 22
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -m MAPFILE, --map MAPFILE
+                        MAP file to process.
+  -o OUTFILE, --out OUTFILE
+                        New MAP file to output.
+  -l LOGFILE, --log LOGFILE
+                        File to output the bad rsIDs to.
+```
+### updateLiftOverBim.pl
 ```
 usage: updateLiftOverBim.pl --bim|-b <old_bim_file> --map|-m <liftOver_new_map_file> --out|-o <output_bim_file>
 
-updateLiftOverBim.pl updates variants information in BIM file following liftOver.
+updateLiftOverBim.pl removes variants that are on contig scaffolds (similar to rmBadLifts.py) following liftOver and then updates variants information in BIM file.
 
 Arguments:
   --bim|-b              old BIM file to be updated.
