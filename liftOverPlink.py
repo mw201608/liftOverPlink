@@ -46,6 +46,17 @@ def map2bed(fin, fout):
     fo.close()
     return True
 
+def bim2bed(fin, fout):
+    print "Converting MAP file to UCSC BED file..."
+    fo = open(fout, 'w')
+    for ln in myopen(fin):
+        chrom, rs, mdist, pos, A1, A2 = ln.split()
+        chrom = 'chr' + chrom
+        pos = int(pos)
+        fo.write('%s\t%d\t%d\t%s\n' % (chrom, pos-1, pos, rs))
+    fo.close()
+    return True
+
 # global var:
 LIFTED_SET = set()
 UNLIFTED_SET = set()
@@ -132,7 +143,9 @@ if __name__ == '__main__':
                     "format from one genome build to another, using liftOver."
     )
     parser.add_argument('-m', "--map", dest='mapFile', required = True,
-                        help='The plink MAP file to `liftOver`.')
+                        help='The plink MAP or BIM file to `liftOver`.')
+    parser.add_argument('-b', dest='isBim', action='store_true',
+                    help='Input map file is in BIM format.')
     parser.add_argument('-p', "--ped", dest='pedFile',
                         help='Optionally remove "unlifted SNPs" from the plink ' +
                              'PED file after running `liftOver`.')
@@ -147,6 +160,7 @@ if __name__ == '__main__':
                              '`liftOver`.')
     parser.add_argument('-e', "--bin", dest='liftOverExecutable',
                         help='The location of the `liftOver` executable.')
+    parser.set_defaults(isBim=True)
 
     # Show usage message if user hasn't provided any arguments, rather
     # than giving a non-descript error message with the usage()
@@ -157,7 +171,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     oldBed = args.mapFile + '.bed'
-    makesure(map2bed(args.mapFile, oldBed),
+    if args.isBim:
+        makesure(bim2bed(args.mapFile, oldBed),
+             'bim->bed succ')
+    else:
+        makesure(map2bed(args.mapFile, oldBed),
              'map->bed succ')
 
     # If a location is not specified for the liftOver executable.
